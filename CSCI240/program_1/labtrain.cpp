@@ -30,7 +30,7 @@ double checked_input ( string msg ) {
     float ret;
 
     // Continually ask for input until manual loop termination
-    while (true) {
+    while ( true ) {
         try {
             string input;
 
@@ -43,7 +43,7 @@ double checked_input ( string msg ) {
 
             // Only reachable if the input parses
             break;
-        } catch (const std::invalid_argument& e ) {
+        } catch ( const std::invalid_argument& e ) {
             cout << "\tInvalid input!" << endl;
         }
     }
