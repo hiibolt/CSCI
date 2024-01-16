@@ -1,13 +1,24 @@
-#include <iostream>
-#include <unistd.h>
+/***************************************************************
+CSCI 240         Program 0     Spring 2024
 
-int main(){
-    int test = 0;
-    std::cout << "Hello, World!" << std::endl;
-    while (true) {
-        test ++;
-        std::cout << test << std::endl;
-        usleep(1000000);
-    }
+Name: John White
+
+Section: 240-0002
+
+Date Due: Jan 19th, 2024
+
+Purpose: Compiler training
+***************************************************************/
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    cout << "\nhello, world";
+
+    cout << "\ngoodbye for now..";
+
     return 0;
 }
