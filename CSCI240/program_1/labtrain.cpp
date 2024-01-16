@@ -50,6 +50,7 @@ double checked_input ( string msg ) {
 
     return ret;
 }
+
 int main () {
     const double gravitational_constant = 6.67 * pow(10, -11);
 
