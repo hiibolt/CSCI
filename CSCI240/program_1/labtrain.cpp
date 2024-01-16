@@ -1,11 +1,11 @@
 /***************************************************************
 CSCI 240         Program 1     Fall 2019
 
-Programmer:
+Programmer: John White
 
-Section:
+Section: 240-0002
 
-Date Due:
+Date Due: Jan 26th, 2024
 
 Purpose: The purpose of this program is to calculate and display
          the gravitational force between two objects.
@@ -20,22 +20,59 @@ Purpose: The purpose of this program is to calculate and display
 
 using namespace std;
 
+/**
+ * @brief A checked input that prevents an invalid conversion.
+ *
+ * @param string String which will prompt prior to taking input
+ * @return Returns a now-parsed double
+ */
+double checked_input ( string msg ) {
+    float ret;
+
+    // Continually ask for input until manual loop termination
+    while (true) {
+        try {
+            string input;
+
+            // Output template message and direct to input string
+            cout << msg;
+            cin >> input;
+
+            // Attempt to parse to a float
+            ret = stof(input);
+
+            // Only reachable if the input parses
+            break;
+        } catch (const std::invalid_argument& e ) {
+            cout << "\tInvalid input!" << endl;
+        }
+    }
+
+    return ret;
+}
 int main () {
-    float mass_1;
-    float mass_2;
-    double distance = 0;
-    const double gravity = 6.67 * pow(10, -11);
+    const double gravitational_constant = 6.67 * pow(10, -11);
 
-    cout << "Mass (kg) of object 1: ";
-    cin >> mass_1;
+    double mass_obj_1;
+    double mass_obj_2;
+    double distance_between = 0;
 
-    cout << "Mass (kg) of object 2: ";
-    cin >> mass_2;
+    mass_obj_1 = checked_input("Enter the mass of object 1 (in kilograms): ");
 
-    cout << "Distance (m) between object 1 and 2 (must be non-zero): ";
-    cin >> distance;
+    mass_obj_2 = checked_input("Enter the mass of object 2 (in kilograms): ");
 
-    cout << "Gravitational Force: " << gravity * mass_1 * mass_2 / pow(distance, 2);
+    // Prevent zero from being inputted (prevents div_by_zero errors)
+    while (distance_between == 0) {
+        distance_between = checked_input("Enter the (non-zero) distance between the 2 objects (in meters): ");
+
+        if (distance_between == 0) {
+            cout << "\tMust be non-zero!" << endl;
+        }
+    }
+
+    double gravitational_force = gravitational_constant * mass_obj_1 * mass_obj_2 / pow(distance_between, 2);
+
+    cout << "\n\nThe force of gravitational attraction is: " << gravitational_force << endl << " newtons.";
 
     return 0;
 }
