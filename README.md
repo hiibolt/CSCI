@@ -5,10 +5,13 @@ Core repository in which I host my assignments for various computer science cour
 
 ### Compilation
 I use terse Nix Flakes with a terse `devShell`, with a flake differing based on the course or program.
-I use **envrc** to automatically load said flake as my environment, which also hot-reloads the environment if I tweak `flake.nix`.
+
+I use [**direnv**](https://direnv.net/) to automatically load said flake as my environment, which also hot-reloads the environment if I tweak `flake.nix`.
+
+I try to use industry standard for both choice of compiler and compilation options, where possible.
 
 ### Shell
-I use **fish** with **tide** for pretty output.
+I use [**fish**](https://fishshell.com/) with [**Tide**](https://github.com/IlanCosman/tide) for pretty output.
 
 I have a few different custom commands for quickly typing compilation instructions, so I have provided my `config.fish` file below for your convenience.
 
@@ -77,12 +80,12 @@ set fish_greeting "Don't stop 'till Stanford"
 ```
 
 ### Editor
-I use **VSCode** from unstable@nixpkgs.
+I use [**VSCode from unstable@nixpkgs**](https://search.nixos.org/packages?channel=23.11&show=vscode&from=0&size=50&sort=relevance&type=packages&query=vscode).
 
 Extensions:
-- Discord RPC
-- SSH
+- Discord Rich Presence
+- Remote - SSH
 - Remote Explorer
-- Nix Syntax
+- Nix
 - Nix Environment
 - Even Better TOML
