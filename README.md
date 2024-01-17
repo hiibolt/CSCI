@@ -11,7 +11,7 @@ I use [**direnv**](https://direnv.net/) to automatically load said flake as my e
 I try to use industry standard for both choice of compiler and compilation options, where possible.
 
 ### Shell
-I use [**fish**](https://fishshell.com/) with [**Tide**](https://github.com/IlanCosman/tide) for pretty output.
+I use [**fish**](https://fishshell.com/) with [**tide**](https://github.com/IlanCosman/tide) for pretty output.
 
 I have a few different custom commands for quickly typing compilation instructions, so I have provided my `config.fish` file below for your convenience.
 
