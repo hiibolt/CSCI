@@ -1,17 +1,16 @@
 /***************************************************************
-CSCI 240         Program 1     Fall 2019
+CSCI 240         Program 2     Fall 2019
 
 Programmer: John White
 
 Section: 240-0002
 
-Date Due: Jan 26th, 2024
+Date Due: Feb 2nd, 2024
 
 Purpose: The purpose of this program is to calculate and display
-         the gravitational force between two objects.
+         the vertex of a mathematical parabola given its coefficients.
 
-         The user provides the mass of the two objects and the
-         distance between the objects.
+         The user provides the a, b, and c coefficients of the parabola.
 ***************************************************************/
 
 #include <iostream>
