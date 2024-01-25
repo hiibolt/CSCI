@@ -1,7 +1,7 @@
 /***************************************************************
 CSCI 240         Program 0     Spring 2024
 
-Name: John White
+Name: John White (z1994244)
 
 Section: 240-0002
 

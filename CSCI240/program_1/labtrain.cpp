@@ -1,7 +1,7 @@
 /***************************************************************
-CSCI 240         Program 1     Fall 2019
+CSCI 240         Program 1     Spring 2024
 
-Programmer: John White
+Programmer: John White (z1994244)
 
 Section: 240-0002
 
