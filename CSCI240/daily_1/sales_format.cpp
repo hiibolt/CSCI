@@ -54,7 +54,7 @@ int main(){
     double total_cost = item_price * number_items;
 
     cout << endl;
-    cout << right << setw(5) << number_items << " items at $" << fixed << setprecision(2) << item_price << " each will cost $" << setprecision(2) << total_cost;
+    cout << right << setw(5) << number_items << " items at $" << fixed << setprecision(2) << item_price << " each will cost $" << setprecision(2) << total_cost << endl;
 
     return 0;
 }
