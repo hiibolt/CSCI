@@ -53,6 +53,7 @@ int main(){
 
     float total_cost = item_price * number_items;
 
+    cout << item_price << endl;
     cout << endl;
     cout << right << setw(5) << number_items << " items at $" << setprecision(2) << fixed << item_price << " each will cost $" << setprecision(2) << total_cost << endl;
 
