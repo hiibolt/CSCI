@@ -52,7 +52,8 @@ int main(){
     int number_items = checked_input<int>("How many items were purchased? ");
 
     float total_cost = item_price * number_items;
-    
+
+    cout << endl;
     cout << right << setw(5) << number_items << " items at $" << setprecision(2) << fixed << round(item_price * 100) / 100 << " each will cost $" << setprecision(2) << total_cost << endl;
 
     return 0;
