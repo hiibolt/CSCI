@@ -1,3 +1,15 @@
+/***************************************************************
+CSCI 240         Daily 1     Spring 2024
+
+Programmer: John White (z1994244)
+
+Section: 240-0002
+
+Date Due: Feb 02nd, 2024
+
+Purpose: Calculate total cost of a grocery trip.
+***************************************************************/
+
 #include <iostream>
 #include <iomanip>
 #include <unistd.h>
