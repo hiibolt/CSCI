@@ -20,7 +20,7 @@ using namespace std;
  * @brief A checked input that prevents an invalid conversion.
  *
  * @param string String which will prompt prior to taking input
- * @return Returns a now-parsed double
+ * @return Returns a now-parsed typename T
  */
 template <typename T> T checked_input ( string msg ) {
     T ret;
@@ -54,7 +54,7 @@ int main(){
     float total_cost = item_price * number_items;
 
     cout << endl;
-    cout << right << setw(5) << number_items << " items at $" << setprecision(2) << fixed << item_price << " each will cost $" << setprecision(2) << total_cost << endl;
+    cout << right << setw(5) << number_items << " items at $" << fixed << setprecision(2) << item_price << " each will cost $" << setprecision(2) << total_cost << endl;
 
     return 0;
 }
