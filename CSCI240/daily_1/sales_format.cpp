@@ -12,7 +12,7 @@ Purpose: Calculate total cost of a grocery trip.
 
 #include <iostream>
 #include <iomanip>
-#include <unistd.h>
+#include <cmath>
 
 using namespace std;
 
@@ -48,13 +48,12 @@ template <typename T> T checked_input ( string msg ) {
 }
 
 int main(){
-    double item_price = checked_input<double>("What is the price for a single item? ");
+    float item_price = checked_input<float>("What is the price for a single item? ");
     int number_items = checked_input<int>("How many items were purchased? ");
 
-    double total_cost = item_price * number_items;
-
-    cout << endl;
-    cout << right << setw(5) << number_items << " items at $" << fixed << setprecision(2) << item_price << " each will cost $" << setprecision(2) << total_cost << endl;
+    float total_cost = item_price * number_items;
+    
+    cout << right << setw(5) << number_items << " items at $" << setprecision(2) << fixed << round(item_price * 100) / 100 << " each will cost $" << setprecision(2) << total_cost << endl;
 
     return 0;
 }
