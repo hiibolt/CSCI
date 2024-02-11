@@ -1,5 +1,5 @@
 /***************************************************************
-CSCI 240         Daily 2     Spring 2024
+CSCI 240         Daily 4     Spring 2024
 
 Programmer: John White (z1994244)
 
@@ -7,7 +7,7 @@ Section: 240-0002
 
 Date Due: Feb 06th, 2024
 
-Purpose: Learn the use of various operators in C++
+Purpose: Calculate multiples
 ***************************************************************/
 
 #include <iostream>

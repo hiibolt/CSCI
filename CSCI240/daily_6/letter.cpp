@@ -1,13 +1,13 @@
 /***************************************************************
-CSCI 240         Daily 5     Spring 2024
+CSCI 240         Daily 6     Spring 2024
 
 Programmer: John White (z1994244)
 
 Section: 240-0002
 
-Date Due: Feb 06th, 2024
+Date Due: Feb 16th, 2024
 
-Purpose: Learn the use of various operators in C++
+Purpose: Calculate letter grades
 ***************************************************************/
 
 #include <iostream>
@@ -47,12 +47,21 @@ int checked_input_int ( string msg ) {
 }
 
 int main(){
-    int num_1 = checked_input_int("Enter an integer value: ");
+    int num_1 = checked_input_int("What is the test score? ");
 
-    cout << endl;
+    char letter_grade;
 
-    if (num_1 == 0)
-        cout << "The value cannot be 0." << endl;
-    else 
-        cout << "The value " << num_1 << " is " << (num_1 % 2 == 0 ? "EVEN." : "ODD.") << endl;
+    if ( num_1 >= 92 ) {
+        letter_grade = 'A';
+    } else if ( num_1 >= 84 ) {
+        letter_grade = 'B';
+    } else if ( num_1 >= 76 ) {
+        letter_grade = 'C';
+    } else if ( num_1 >= 68 ) {
+        letter_grade = 'D';
+    } else {
+        letter_grade = 'F';
+    }
+
+    cout << endl << "The score " << num_1 << " earns the grade " << letter_grade << endl;
 }
