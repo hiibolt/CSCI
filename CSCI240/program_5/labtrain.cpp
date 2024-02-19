@@ -11,6 +11,14 @@ Purpose: To calculate the value of a given expression via
  checked user input.
 ***************************************************************/
 
+/*
+
+    /ᐠ - ˕ -マ
+
+    @hiibolt on GitHub 
+
+*/
+
 #include <iostream>
 #include <array>
 #include <algorithm>
@@ -105,7 +113,7 @@ int main(){
 
             // I think the Gamma Function is a bit out of scope,
             // so we will only allow positive integers
-            if ( num < 1 ) {
+            if ( num < 0 ) {
                 cout << "This factorial implementation does not use the Gamma Function. Please use a *positive integer*." << endl;
 
                 continue;
