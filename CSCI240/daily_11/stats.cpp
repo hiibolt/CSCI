@@ -7,7 +7,7 @@ Section: 240-0002
 
 Date Due: March 8th
 
-Purpose: <purpose>
+Purpose: Better understand function headers.
 ***************************************************************/
 
 /*
