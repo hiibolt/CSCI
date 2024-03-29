@@ -6,7 +6,7 @@
 CXX = g++
 CXXFLAGS = -Wall -Werror -ansi -pedantic -std=c++14 -g 
 OUTPUT_NAME = result
-ENTRYPOINT = low_val
+ENTRYPOINT = vowel
 
 $(ENTRYPOINT): $(ENTRYPOINT).o
 	$(CXX) $(CXXFLAGS) -o $(OUTPUT_NAME) $(ENTRYPOINT).o
