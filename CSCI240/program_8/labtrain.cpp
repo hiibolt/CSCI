@@ -74,7 +74,7 @@ void test_8( PiggyBank*, PiggyBank* );
 
 int main () {
     PiggyBank bank1;
-    PiggyBank bank2 = PiggyBank();
+    PiggyBank bank2;
 
     test_1 ( &bank1, &bank2 );
     test_2 ( &bank1, &bank2 );
