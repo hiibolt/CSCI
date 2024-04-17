@@ -197,8 +197,8 @@ double PiggyBank::calc_value () {
 /**
  * @brief Various tests run on the PiggyBank class
  *
- * @param PiggyBank* Reference to the first PiggyBank
- * @param PiggyBank* Reference to the second PiggyBank
+ * @param PiggyBank* Pointer to the first PiggyBank
+ * @param PiggyBank* Pointer to the second PiggyBank
  */
 void test_1 ( PiggyBank* bank1, PiggyBank* bank2 ) {
     cout << "***** Test 1: Default Constructor and printPiggyBank *****" << endl << endl;
