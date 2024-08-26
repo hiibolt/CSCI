@@ -1,4 +1,5 @@
-.direnv/*
+/CSCI240/.direnv
+/CSCI241/.direnv
 .envrc
 compare_1
 compare_2
