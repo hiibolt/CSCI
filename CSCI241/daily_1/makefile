@@ -1,6 +1,7 @@
 #
-# PROGRAM: Lab Training Exercise
-# AUTHOR:  your name
+# PROGRAM:    Selection Sort
+# PROGRAMMER: John White
+# LOGON ID:   z1994244
 #
 
 CXX = g++
