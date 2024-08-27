@@ -35,18 +35,12 @@ int build_array ( int array[] ) {
 };
 void print_array ( int array[], int n ) {
     for ( int i = 0; i < n; i++ ) {
-        // If the current index is divisible by 8 and not 
-        //  0, print a newline
-        if ( i % 8 == 0 && i != 0 ) {
-            std::cout << std::endl;
-        }
-
         // Print the current element
         std::cout << std::setw(8) << std::right << array[i];
 
-        // If the current index is the last index and the total number
-        //  of elements is not divisible by 8, print a newline
-        if ( i == n - 1 && n % 8 != 0 ) {
+        // If the current index is divisible by 8 and not
+        //  0, print a newline
+        if ( i % 8 == 7 || (i == n - 1) ) {
             std::cout << std::endl;
         }
     }
