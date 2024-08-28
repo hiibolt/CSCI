@@ -25,7 +25,7 @@ void print_array ( double array[], int n ) {
     }
 };
 void insertion_sort ( double array[], int n) {
-    int cursor = 0;
+    int cursor = 1;
 
     // Pass through the entire element
     while ( cursor < n ) {
