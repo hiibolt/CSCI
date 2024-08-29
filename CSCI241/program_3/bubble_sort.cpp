@@ -1,3 +1,24 @@
+/***************************************************************
+CSCI 241         John White     Spring 2024
+
+Programmer: z19942444
+
+Section: 241-0002
+
+Date Due: Friday, August 31rst
+
+Purpose: Perform a bubble (sinking) sort.
+***************************************************************/
+
+/*
+
+    /ᐠ - ˕ -マ
+
+    @hiibolt on GitHub 
+
+*/
+
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -8,6 +29,14 @@ using std::cin;
 using std::endl;
 using std::string;
 
+
+/**
+    * @brief Build an array from input
+    *
+    * @param array[] The array to populate
+    *
+    * @return The number of elements in the array
+    */
 int build_array ( string array[] ) {
     int n = 0;
 
@@ -19,6 +48,13 @@ int build_array ( string array[] ) {
 
     return n;
 };
+
+/**
+    * @brief Print an array
+    *
+    * @param array[] The array to print
+    * @param n The number of elements in the array
+    */
 void print_array ( string array[], int n ) {
     for ( int i = 0; i < n; i++ ) {
         // Print the current element
@@ -31,6 +67,13 @@ void print_array ( string array[], int n ) {
         }
     }
 };
+
+/**
+    * @brief Sort an array using bubble sort
+    *
+    * @param array[] The array to sort
+    * @param n The number of elements in the array
+    */
 void bubble_sort ( string array[], int n ) {
     int cap = n - 1;
 

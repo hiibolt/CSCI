@@ -1,7 +1,36 @@
+/***************************************************************
+CSCI 241         John White     Spring 2024
+
+Programmer: z19942444
+
+Section: 241-0002
+
+Date Due: Friday, August 31rst
+
+Purpose: Perform an insertion sort.
+***************************************************************/
+
+/*
+
+    /ᐠ - ˕ -マ
+
+    @hiibolt on GitHub 
+
+*/
+
+
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
 
+
+/**
+    * @brief Build an array from input
+    *
+    * @param array[] The array to populate
+    *
+    * @return The number of elements in the array
+    */
 int build_array (double array[] ) {
     int n = 0;
 
@@ -12,6 +41,13 @@ int build_array (double array[] ) {
 
     return n;
 };
+
+/**
+    * @brief Print an array
+    *
+    * @param array[] The array to print
+    * @param n The number of elements in the array
+    */
 void print_array ( double array[], int n ) {
     for ( int i = 0; i < n; i++ ) {
         // Print the current element
@@ -24,6 +60,13 @@ void print_array ( double array[], int n ) {
         }
     }
 };
+
+/**
+    * @brief Sort an array using insertion sort
+    *
+    * @param array[] The array to sort
+    * @param n The number of elements in the array
+    */
 void insertion_sort ( double array[], int n) {
     int cursor = 1;
 

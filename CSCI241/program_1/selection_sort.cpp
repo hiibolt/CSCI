@@ -18,10 +18,19 @@ Purpose: Perform a selection sort.
 
 */
 
+
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
 
+
+/**
+    * @brief Build an array from input
+    *
+    * @param array[] The array to populate
+    *
+    * @return The number of elements in the array
+    */
 int build_array ( int array[] ) {
     int n = 0;
 
@@ -33,6 +42,13 @@ int build_array ( int array[] ) {
 
     return n;
 };
+
+/**
+    * @brief Print an array
+    *
+    * @param array[] The array to print
+    * @param n The number of elements in the array
+    */
 void print_array ( int array[], int n ) {
     for ( int i = 0; i < n; i++ ) {
         // Print the current element
@@ -45,6 +61,13 @@ void print_array ( int array[], int n ) {
         }
     }
 };
+
+/**
+    * @brief Sort an array using selection sort
+    *
+    * @param array[] The array to sort
+    * @param n The number of elements in the array
+    */
 void selection_sort (int array[], int n ) {
     // Start at the first index
     int cursor = 0;
