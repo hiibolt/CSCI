@@ -52,7 +52,7 @@ int main ( ) {
 
 
 /**
-    * Place the queens on the board.
+    * @brief Place the queens on the board.
     * 
     * @param board The board.
     * @param i The row.
@@ -80,7 +80,7 @@ bool place_queens ( bool board[8][8], int i ) {
 }
 
 /**
-    * Check if it is safe to place a queen at the given position.
+    * @brief Check if it is safe to place a queen at the given position.
     * 
     * @param board The board.
     * @param i The row.
@@ -141,7 +141,7 @@ bool is_safe ( bool board[8][8], int i, int g ) {
 }
 
 /**
-    * Print the board.
+    * @brief Print the board.
     * 
     * @param board The board.
     */
@@ -155,7 +155,7 @@ void print_board ( bool board[8][8] ) {
 }
 
 /**
-    * Generate the board.
+    * @brief Generate the board.
     * 
     * @param board The board.
     */
