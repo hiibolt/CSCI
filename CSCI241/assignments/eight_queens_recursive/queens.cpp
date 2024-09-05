@@ -100,7 +100,7 @@ bool is_safe ( bool board[8][8], int i, int g ) {
         }
     }
 
-    // Check for queens in left column one levels above or below
+    // Check for queens in left column one level above or below
     if ( g > 0 ) {
         if ( DEBUG ) { cout << " - Must check left" << endl; }
         // Check one up
@@ -118,7 +118,7 @@ bool is_safe ( bool board[8][8], int i, int g ) {
         }
     }
 
-    // Check for queens in right column one levels above or below
+    // Check for queens in right column one level above or below
     if ( g < 7 ) {
         if ( DEBUG ) { cout << " - Must check right" << endl; }
         // Check one up
