@@ -100,37 +100,19 @@ bool is_safe ( bool board[8][8], int i, int g ) {
         }
     }
 
-    // Check for queens in left column one level above or below
-    if ( g > 0 ) {
-        if ( DEBUG ) { cout << " - Must check left" << endl; }
-        // Check one up
-        if ( i >= 1 && board[i - 1][g - 1] ) {
-            if ( DEBUG ) { cout << "Offending queen (left) at (" << (g - 1) << ", " << (i - 1) << ")!" << endl; }
-
-            return false;
-        }
-
-        // Check one down
-        if ( i < 7 && board[i + 1][g - 1] ) {
-            if ( DEBUG ) { cout << "Offending queen (left) at (" << (g - 1) << ", " << (i + 1) << ")!" << endl; }
+    // Check for queens in the left diagonal
+    for ( int inner_i = i, inner_g = g; inner_i >= 0 && inner_g >= 0; inner_i--, inner_g-- ) {
+        if ( board[inner_i][inner_g] ) {
+            if ( DEBUG ) { cout << "Offending queen (left) at (" << inner_g << ", " << inner_i << ")!" << endl; }
 
             return false;
         }
     }
 
     // Check for queens in right column one level above or below
-    if ( g < 7 ) {
-        if ( DEBUG ) { cout << " - Must check right" << endl; }
-        // Check one up
-        if ( i >= 1 && board[i - 1][g + 1] ) {
-            if ( DEBUG ) { cout << "Offending queen (right) at (" << (g + 1) << ", " << (i - 1) << ")!" << endl; }
-
-            return false;
-        }
-
-        // Check one down
-        if ( i < 7 && board[i + 1][g + 1] ) {
-            if ( DEBUG ) { cout << "Offending queen (right) at (" << (g + 1) << ", " << (i + 1) << ")!" << endl; }
+    for ( int inner_i = i, inner_g = g; inner_i >= 0 && inner_g < 8; inner_i--, inner_g++ ) {
+        if ( board[inner_i][inner_g] ) {
+            if ( DEBUG ) { cout << "Offending queen (right) at (" << inner_g << ", " << inner_i << ")!" << endl; }
 
             return false;
         }
