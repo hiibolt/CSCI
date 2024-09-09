@@ -33,9 +33,9 @@ bool quad_sum_is_n ( int a[], int len, int n ) {
     //  is not the most efficient way to solve this problem, but it is
     //  the most straightforward.
     for ( int p_1 = 0; p_1 < len - 3; p_1++ ) {
-        for ( int p_2 = p_1; p_2 < len - 2; p_2 ++ ) {
-            for ( int p_3 = p_2; p_3 < len - 1; p_3 ++ ) {
-                for ( int p_4 = p_3; p_4 < len; p_4++ ) {
+        for ( int p_2 = p_1 + 1; p_2 < len - 2; p_2 ++ ) {
+            for ( int p_3 = p_2 + 1; p_3 < len - 1; p_3 ++ ) {
+                for ( int p_4 = p_3 + 1; p_4 < len; p_4++ ) {
                     // Grab each element
                     int e_1 = a[p_1];
                     int e_2 = a[p_2];
