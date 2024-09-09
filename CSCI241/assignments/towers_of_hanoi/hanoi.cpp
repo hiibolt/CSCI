@@ -1,3 +1,24 @@
+/***************************************************************
+CSCI 241         John White     Spring 2024
+
+Programmer: z19942444
+
+Section: 241-0002
+
+Date Due: Friday, September 15th
+
+Purpose: Find the number of moves to move n disks from one peg to another using a third peg.
+***************************************************************/
+
+/*
+
+    /ᐠ - ˕ -マ
+
+    @hiibolt on GitHub 
+
+*/
+
+
 #include <iostream>
 #include <cstdlib>
 
@@ -5,6 +26,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::atoi;
+
 
 /**
     * Move n disks from the source peg to the destination peg using the temp peg.

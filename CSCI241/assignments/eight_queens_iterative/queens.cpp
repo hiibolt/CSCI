@@ -5,7 +5,7 @@ Programmer: z19942444
 
 Section: 241-0002
 
-Date Due: Friday, August 31rst
+Date Due: Sunday, Sep 15th
 
 Purpose: To solve the eight queens problem using iteration.
 ***************************************************************/
