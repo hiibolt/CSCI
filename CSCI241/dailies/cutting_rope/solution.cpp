@@ -43,7 +43,7 @@ int cutting_rope ( int a[], int n, int sum ) {
     }
     
     // Find the maximum length of the rope that can be cut
-    for ( int cut = max_len - 1; cut > 0; cut-- ) {
+    for ( int cut = max_len - 1; cut >= 0; cut-- ) {
         int total = 0;
 
         // Calculate the total length of the rope
