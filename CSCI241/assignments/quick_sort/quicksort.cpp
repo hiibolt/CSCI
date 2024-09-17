@@ -1,9 +1,32 @@
+/***************************************************************
+CSCI 241         John White     Spring 2024
+
+Programmer: z19942444
+
+Section: 241-0002
+
+Date Due: Friday, September 20th
+
+Purpose: Perform a quick sort.
+***************************************************************/
+
+/*
+
+    /ᐠ - ˕ -マ
+
+    @hiibolt on GitHub 
+
+*/
+
+
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
 #include <string>
 
+
 using namespace std;
+
 
 /**
     * @brief Build an array from input

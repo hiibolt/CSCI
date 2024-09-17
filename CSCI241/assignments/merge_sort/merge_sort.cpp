@@ -1,3 +1,24 @@
+/***************************************************************
+CSCI 241         John White     Spring 2024
+
+Programmer: z19942444
+
+Section: 241-0002
+
+Date Due: Friday, September 20th
+
+Purpose: Perform a merge sort.
+***************************************************************/
+
+/*
+
+    /ᐠ - ˕ -マ
+
+    @hiibolt on GitHub 
+
+*/
+
+
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
