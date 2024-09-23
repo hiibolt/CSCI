@@ -5,9 +5,9 @@ Programmer: z19942444
 
 Section: 241-0002
 
-Date Due: Friday, September 20th
+Date Due: ?
 
-Purpose: Perform a quick sort.
+Purpose: Find the last index of a character in a string.
 ***************************************************************/
 
 /*
