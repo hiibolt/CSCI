@@ -185,24 +185,27 @@ int main ( int argc, char *argv[] ) {
 
     // Check for errors
     if ( fd == -1 ) {
-        fprintf ( stderr, "Failed to open file: %s: %s\n", state.file, strerror(errno) );
+        fprintf ( stderr, "Failed to open file '%s': %s\n", state.file, strerror(errno) );
         exit(1);
     }
 
     // Write the message to the file
     if ( write ( fd, state.message, strlen(state.message) ) == -1 ) {
-        fprintf ( stderr, "Failed to write to file: %s: %s\n", state.file, strerror(errno) );
+        fprintf ( stderr, "Failed to write to file '%s': %s\n", state.file, strerror(errno) );
         exit(1);
     }
 
     // Write an endline to the file
     if ( write ( fd, "\n", 1 ) == -1 ) {
-        fprintf ( stderr, "Failed to write to file: %s: %s\n", state.file, strerror(errno) );
+        fprintf ( stderr, "Failed to write to file '%s': %s\n", state.file, strerror(errno) );
         exit(1);
     }
 
     // Close the file
-    close ( fd );
+    if ( close ( fd ) == -1 ) {
+        fprintf ( stderr, "Failed to close file '%s': %s\n", state.file, strerror(errno) );
+        exit(1);
+    }
 
     // Remove write permissions
     if ( chmod ( state.file, 0 ) == -1 ) {
