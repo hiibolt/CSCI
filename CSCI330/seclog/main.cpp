@@ -1,3 +1,24 @@
+/***************************************************************
+CSCI 330         John White     Fall 2024
+
+Programmer: z19942444
+
+Section: 330-0001
+
+Date Due: Saturday, November 5th
+
+Purpose: Create a secret logging program
+***************************************************************/
+
+/*
+
+    /ᐠ - ˕ -マ
+
+    @hiibolt on GitHub 
+
+*/
+
+
 #include <iostream>
 #include <unistd.h> 
 #include <fcntl.h>
@@ -5,11 +26,16 @@
 #include <cstring>
 #include <errno.h>
 
+
+/**
+ * @brief The program state
+ */
 struct State {
     char *file;
     char *message;
     bool clear;
 };
+
 
 /**
  * @brief Command line argument parser (CLAP)
