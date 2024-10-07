@@ -25,10 +25,29 @@ Purpose: Emulate the UNIX `cat` command at a rudimentary level
 
 #include <unistd.h>
 #include <string>
+#include <iostream>
+#include <fcntl.h>
+#include <cstring>
 
 #include "lib.h"
 
 
+/**
+ * @brief Parses a string to an integer, returning an error if the string is not a valid integer
+ * 
+ * @param str The string to parse
+ * 
+ * @return A result containing the integer
+ */
+Result<int> checked_stoi ( std::string str ) {
+    try {
+        return Ok(std::stoi(str));
+    } catch ( std::invalid_argument& e ) {
+        return Err<int>("Argument '" + str + "' is not a valid integer!");
+    } catch ( std::out_of_range& e ) {
+        return Err<int>("Argument '" + str + "' is out of range!");
+    }
+}
 
 /**
  * @brief Writes a buffer to stdout
@@ -40,7 +59,7 @@ Purpose: Emulate the UNIX `cat` command at a rudimentary level
  * 
  * @note Exits the program if the write fails
  */
-void print ( unsigned char buffer[], ssize_t len, State *state ) {
+Result<Nothing> print ( unsigned char buffer[], ssize_t len, State *state ) {
     if ( state->caeser_shift ) {
         caeser_shift ( buffer, len, state->shift );
     } else if ( state->normal_shift ) {
@@ -49,35 +68,21 @@ void print ( unsigned char buffer[], ssize_t len, State *state ) {
 
     if ( state->binary ) {
         unsigned char * binary = bytesToBinary(buffer, len);
-        ssize_t result = write ( 1, binary, len * 8 );
+        
+        PROPAGATE_SYSCALL_NO_RET(write( 1, binary, len * 8 ), Nothing);
 
-        if ( result == -1 ) {
-            perror ( "Failed to write to stdout!" );
-
-            exit( 1 );
-        }
-
-        return;
+        return Ok<Nothing>(Nothing());
     } else if ( state->hexa ) {
         unsigned char * hex = bytesToHex(buffer, len);
-        ssize_t result = write ( 1, hex, len * 2 );
+        
+        PROPAGATE_SYSCALL_NO_RET(write ( 1, hex, len * 2 ), Nothing);
 
-        if ( result == -1 ) {
-            perror ( "Failed to write to stdout!" );
-
-            exit( 1 );
-        }
-
-        return;
+        return Ok<Nothing>(Nothing());
     }
 
-    ssize_t result = write ( 1, buffer, len );
-
-    if ( result == -1 ) {
-        perror ( "Failed to write to stdout!" );
-
-        exit( 1 );
-    }
+    PROPAGATE_SYSCALL_NO_RET(write ( 1, buffer, len ), Nothing);
+    
+    return Ok<Nothing>(Nothing());
 }
 
 /**
@@ -89,34 +94,31 @@ void print ( unsigned char buffer[], ssize_t len, State *state ) {
  * 
  * @note Exits the program if the read fails
  */
-void print_from_fd ( int fd, State *state ) {
+Result<Nothing> print_from_fd ( int fd, State *state ) {
     unsigned char * buffer = new unsigned char[state->buffer_size];
-    ssize_t result;
-
     if ( state->max_bytes == -1 ) {
-        while ( ( result = read ( fd, buffer, state->buffer_size ) ) > 0 ) {
+        ssize_t result;
+        PROPAGATE_SYSCALL(&result, read( fd, buffer, state->buffer_size ), Nothing);
+
+        while ( result > 0 ) {
             print ( buffer, result, state );
+
+            PROPAGATE_SYSCALL(&result, read( fd, buffer, state->buffer_size ), Nothing);
         }
 
-        if ( result == -1 ) {
-            perror ( "Failed to read from file!" );
-
-            exit( 1 );
-        }
-
-        return;
+        return Ok<Nothing>(Nothing());
     }
 
-    while ( ( result = read ( fd, buffer, std::min(state->buffer_size, state->remaining_bytes) ) ) > 0 ) {
+    ssize_t result;
+    PROPAGATE_SYSCALL(&result, read( fd, buffer, std::min(state->buffer_size, state->remaining_bytes) ), Nothing);
+    while ( result > 0 ) {
         state->remaining_bytes -= result;
         print ( buffer, result, state );
+
+        PROPAGATE_SYSCALL(&result, read( fd, buffer, std::min(state->buffer_size, state->remaining_bytes) ), Nothing);
     }
 
-    if ( result == -1 ) {
-        perror ( "Failed to read from file!" );
-
-        exit( 1 );
-    }
+    return Ok<Nothing>(Nothing());
 }
 
 /**
