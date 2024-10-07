@@ -1,9 +1,25 @@
-#
-# PROGRAM:    Dog Command
-# PROGRAMMER: John White
-# LOGON ID:   z1994244
-# DATE DUE:   ASAP
-#
+/***************************************************************
+                            Makefile
+
+
+CSCI 330         John White     Fall 2024
+
+Programmer: z19942444
+
+Section: 330-0001
+
+Date Due: Saturday, September 28rst
+
+Purpose: Emulate the UNIX `cat` command at a rudimentary level
+***************************************************************/
+
+/*
+
+    /ᐠ - ˕ -マ
+
+    @hiibolt on GitHub 
+
+*/
 
 # Directories
 
