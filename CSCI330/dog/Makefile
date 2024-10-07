@@ -27,17 +27,18 @@ SOURCE_DIR = src
 OBJ_DIR = obj
 TESTS_DIR = tests
 
+# Variables
+OUTPUT = dog
+
 # Compiler variables
 CXX = g++
 CXXFLAGS = -Wall -Werror -ansi -pedantic -std=c++14
 
 # Rule to link object code files to create executable file
-all: $(OBJ_DIR) $(SOURCE_DIR)
-	make dog
-	printf "\n\n\`dog\` compiled successfully!\n"
-dog: $(OBJ_DIR)/main.o $(OBJ_DIR)/lib.o
-	$(CXX) $(CXXFLAGS) -o dog $^
-	printf "\n\n\`dog\` compiled successfully!\n"
+all: $(OBJ_DIR) $(SOURCE_DIR) $(OUTPUT)
+
+$(OUTPUT): $(OBJ_DIR)/main.o $(OBJ_DIR)/lib.o
+	$(CXX) $(CXXFLAGS) -o $(OUTPUT) $^
 
 # Rules to compile source code file to object code
 $(OBJ_DIR)/main.o: $(SOURCE_DIR)/main.cc $(SOURCE_DIR)/lib.h
@@ -61,9 +62,6 @@ $(SOURCE_DIR):
 # Phony target to remove object code and executable files
 clean:
 	rm -f dog *.o
-
-build:
-	make dog
 
 run:
 	./dog
