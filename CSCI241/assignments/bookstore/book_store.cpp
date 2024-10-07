@@ -28,10 +28,16 @@ Purpose: Simulate a book store.
 
 using namespace std;
 
+/**
+ * Default constructor for the book_store class
+ */
 book_store::book_store ( ) {
     num_books = 0;
 }
 
+/**
+ * Print the book inventory listing
+ */
 void book_store::print () {
     cout << "Book Inventory Listing" << endl << endl;
     cout << left << setw(14) << "ISBN" << setw(44) << "Title" << setw(5) << right << fixed << "Price" << setw(7) << right << "   Qty" << "." << endl << endl;
@@ -40,6 +46,11 @@ void book_store::print () {
     }
 }
 
+/**
+ * Read the books from a file
+ * 
+ * @param filename The filename to read the books from
+ */
 void book_store::read_books ( const char *filename ) {
     ifstream file;
 
@@ -105,6 +116,11 @@ void book_store::read_books ( const char *filename ) {
     file.close();
 }
 
+/**
+ * Process the orders from a file
+ * 
+ * @param filename The filename to read the orders from
+ */
 void book_store::process_orders (const char *filename) {
     ifstream file;
 
