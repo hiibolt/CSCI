@@ -10,7 +10,7 @@ Section: 330-0001
 
 Date Due: Saturday, September 28rst
 
-Purpose: Emulate the UNIX `cat` command at a rudimentary level
+Purpose: Emulate the UNIX `dog` command at a rudimentary level
 ***************************************************************/
 
 /*

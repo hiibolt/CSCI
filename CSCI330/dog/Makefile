@@ -1,17 +1,17 @@
-#***************************************************************
+# ***************************************************************
 #                            Makefile
 #
 #
-#CSCI 330         John White     Fall 2024
+# CSCI 330         John White     Fall 2024
 #
-#Programmer: z19942444
+# Programmer: z19942444
 #
-#Section: 330-0001
+# Section: 330-0001
 #
-#Date Due: Saturday, September 28rst
+# Date Due: Saturday, September 28rst
 #
-#Purpose: Emulate the UNIX `cat` command at a rudimentary level
-#***************************************************************
+# Purpose: Emulate the UNIX `dog` command at a rudimentary level
+# ***************************************************************
 #
 #
 #
