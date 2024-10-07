@@ -146,6 +146,13 @@ Result<State> clap ( int argc, char *argv[] ){
  * @return A Result type with an empty successful value
  */
 Result<Nothing> dog ( int argc, char *argv[], State *state)  {
+    // If there are no arguments remaining, print from stdin
+    if ( optind == argc ) {
+        print_from_fd ( 0, state );
+
+        return Ok<Nothing>(Nothing());
+    }
+
     // Extract any remaining arguments
     for ( int i = optind; i < argc; i++ ) {
         state->remaining_bytes = state->max_bytes;
