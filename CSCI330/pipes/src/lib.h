@@ -8,14 +8,14 @@ Programmer: z19942444
 
 Section: 330-0001
 
-Date Due: ASAP 
+Date Due: ASAP
 
-Purpose: Implement a REPL equivalent to the `|` pipe operator 
+Purpose: Create a TUI REPL to emulate the `|` operator in shell scripting
 ***************************************************************/
 
 /*
 
-    /ᐠ - ˕ -マ 
+    /ᐠ - ˕ -マ
 
     @hiibolt on GitHub 
 
@@ -172,5 +172,7 @@ Result<T> Err ( std::string err ) {
 // Macro to propagate syscall errors
 #define PROPAGATE_SYSCALL_NO_RET(syscall_result, ret_type) \
     if ( syscall_result == -1 ) return Result<ret_type>(ret_type(), false, strerror(errno));
+
+void goodbye ( );
 
 #endif
