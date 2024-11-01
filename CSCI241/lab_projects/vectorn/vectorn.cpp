@@ -253,7 +253,14 @@ ostream& operator<<(ostream& os, const vectorn& obj)
  *
  * @return A vectorn containing the results of the multiplication.
  */
-vectorn operator*(double lhs, const vectorn& rhs)   
-{
-    return vectorn();
+vectorn operator* ( double lhs, const vectorn& rhs ) {
+    double* result_array = new double[rhs.v_capacity];
+
+    vectorn result(result_array, rhs.v_capacity);
+
+    for ( size_t i = 0; i < rhs.v_capacity; i++ ) {
+        result.v_array[i] = rhs.v_array[i] * lhs;
+    }
+
+    return result;
 }
