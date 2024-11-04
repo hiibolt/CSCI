@@ -22,6 +22,8 @@
 
 */
 
+
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -33,6 +35,8 @@
 #include "mystack.h"
 #include "sml.h"
 #include "inpost.h"
+
+
 
 /**
  * @brief Default contructor for the scc class
@@ -101,7 +105,6 @@ void scc::first_pass ( ) {
 		}
 	}
 };
-
 /**
  * @brief Second pass of the Simple Compiler
  *
@@ -502,14 +505,17 @@ void scc::process_let ( std::stringstream* line_ss ) {
 	//  variable and its memory address
 	int var_addr = this->find_or_insert_var( var_str[0] );
 
+	// Convert the prefix expression to a postfix expression
 	std::string postfix = convert( prefix_str );
 
-	// Begin processing our postfix
+	// Define the stack index and postfix stringstream
 	int next_stack_idx = 0;
 	std::stringstream postfix_ss(postfix);
 
+	// Process the postfix expression
 	std::string token;
 	while ( postfix_ss >> token ) {
+		// Check if the token is a variable or constant
 		if ( std::isalpha(token[0]) || std::isdigit(token[0]) ) {
 			// Get the address of the variable / constant
 			int address = ( std::isalpha( token[0] ) ?
@@ -526,6 +532,7 @@ void scc::process_let ( std::stringstream* line_ss ) {
 			continue;
 		}
 		
+		// Process the token
 		switch ( token[0] ) {
 			case '+': case '*': {
 				this->process_token_plus_mult( token, &next_stack_idx );
