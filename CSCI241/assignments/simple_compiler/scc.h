@@ -47,6 +47,9 @@ private:
     int next_symbol_table_idx = 0;
     
     // Add additonal private member functions as desired.
+    int  find_or_insert_var ( int           );
+    int  find_or_insert_con ( int           );
+    void add_instruction    ( int, int = -1 );
 };
 
 #endif
