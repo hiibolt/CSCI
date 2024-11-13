@@ -1,6 +1,17 @@
-#!/bin/bash
+#!/nix/store/4bj2kxdm1462fzcc2i2s4dn33g2angcc-bash-5.2p32/bin/bash
 
-# Helper Functions
+# [ Helper Functions ]
+#######################################
+# Err helper print function, which also
+#  exits the script if the error type is
+#  FATAL.
+# Globals:
+#   ERR_TYPE
+# Arguments:
+#   $1 - The error message to print.
+# Outputs:
+#   Writes the error message to stdout.
+#######################################
 err ( ) {
 	echo "[ Error ] $1" >&2;
 
@@ -8,12 +19,39 @@ err ( ) {
 		exit 1;
 	fi
 }
+#######################################
+# Warn helper print function.
+# Arguments:
+#   $1 - The warning message to print.
+# Outputs:
+#   Writes the warning message to stdout.
+#######################################
 warn ( ) {
 	echo "[ Warning ] $1";
 }
+#######################################
+# Info helper print function.
+# Arguments:
+#   $1 - The info message to print.
+# Outputs:
+#   Writes the info message to stdout.
+#######################################
 info ( ) {
 	echo "[ Info ] $1";
 }
+#######################################
+# Ensure that the database exists and is
+#  readable and writable.
+# Arguments:
+#   $1 - The database filename.
+# Outputs:
+#   Writes an error message if the database
+#    does not exist, is not readable, or is
+#    not writable.
+# Returns:
+#   1 - If the database does not exist, is not
+#        readable, or is not writable.
+#######################################
 ensure_database ( ) {
 	if [ ! -f "$1" ]; then
 		err "Database '$1' does not exist!"; 
@@ -26,6 +64,12 @@ ensure_database ( ) {
 		return 1;
 	fi
 }
+################################
+# Print a goodbye message to the
+#  user.
+# Outputs:
+#   Writes a goodbye message to stdout.
+################################
 goodbye ( ) {
 	HEADER="Goodbye...";
 	HEADER_LEN="${#HEADER}";
@@ -45,7 +89,25 @@ goodbye ( ) {
 	printf "\n\n/ᐠ - ˕ -マ\n";
 }
 
-# Primary commands
+# [ Primary commands ]
+#######################################
+# Count the number of records in the
+#  database.
+# Globals:
+#   FILENAME
+# Arguments:
+#   $1 - The database filename.
+# Outputs:
+#   Writes an error message if the number
+#    of arguments is invalid, or if the
+#    database does not exist or is not
+#    readable. Otherwise, writes the number
+#    of records in the database to stdout.
+# Returns:
+#   1 - If the number of arguments is invalid,
+#        or if the database does not exist or
+#        is not readable.
+#######################################
 count ( ) {
 	# Verify arguments
 	if [ $# -le 0 ]; then
@@ -64,6 +126,29 @@ count ( ) {
 	# Count the number of records
 	awk 'END { print NR-1 }' "$FILENAME";
 }
+#######################################
+# Insert a record into the database.
+# Globals:
+#   FILENAME
+#   MAKE
+#   MODEL
+#   YEAR
+#   COLOR
+# Arguments:
+#   $1 - The database filename.
+#   $2 - The make of the record.
+#   $3 - The model of the record.
+#   $4 - The year of the record.
+#   $5 - The color of the record.
+# Outputs:
+#   Writes an error message if the number of
+#    arguments is invalid, or if the make, model,
+#    year, or color are invalid. Otherwise, writes
+#    a success message to stdout.
+# Returns:
+#   1 - If the number of arguments is invalid, or
+#        if the make, model, year, or color are invalid.
+#######################################
 insert ( ) {
 	# Verify argument number
 	if [ $# -lt 5 ]; then
@@ -105,6 +190,22 @@ insert ( ) {
 	echo "$RECORD" >> ./"$FILENAME" 
 	info "Added record '$RECORD' to database '$FILENAME'";
 }
+#######################################
+# Create a new database.
+# Globals:
+#   FILENAME
+#   HEADER
+# Arguments:
+#   $1 - The filename of the database.
+#   $2 - The header of the database. (Optional)
+# Outputs:
+#   Writes an error message if the number of arguments
+#    is invalid, or if the database already exists. Otherwise,
+#    writes a success message to stdout.
+# Returns:
+#   1 - If the number of arguments is invalid, or if the
+#        database already exists.
+#######################################
 create ( ) {
 	# Verify arguments
 	if [ $# -eq 0 ]; then
@@ -131,6 +232,29 @@ create ( ) {
 	echo "$HEADER" > ./"$FILENAME"
 	echo "[ Info ] Created database '$FILENAME' with header '$HEADER' successfully!"
 }
+#######################################
+# Display records from the database.
+# Globals:
+#   FILENAME
+#   DISPLAY_TYPE
+#   RECORD_NUMBER
+#   COUNT
+#   START_NUM
+#   END_NUM
+# Arguments:
+#   $1 - The database filename.
+#   $2 - The display type. (all, single, range)
+#   $3 - The record number or starting range number.
+#   $4 - The ending range number. (Optional)
+# Outputs:
+#   Writes an error message if the number of arguments
+#    is invalid, or if the database does not exist or is
+#    not readable. Otherwise, writes the requested records
+#    to stdout.
+# Returns:
+#   1 - If the number of arguments is invalid, or if the
+#        database does not exist or is not readable.
+#######################################
 display ( ) {
 	# Verify that we got a filename
 	if [ $# -le 1 ]; then
@@ -235,6 +359,29 @@ display ( ) {
 			;;
 	esac
 }
+#######################################
+# Delete records from the database.
+# Globals:
+#   FILENAME
+#   DELETE_TYPE
+#   RECORD_NUMBER
+#   COUNT
+#   START_NUM
+#   END_NUM
+# Arguments:
+#   $1 - The database filename.
+#   $2 - The delete type. (all, single, range)
+#   $3 - The record number or starting range number.
+#   $4 - The ending range number. (Optional)
+# Outputs:
+#   Writes an error message if the number of arguments
+#    is invalid, or if the database does not exist or is
+#    not readable. Otherwise, writes a success message to
+#    stdout.
+# Returns:
+#   1 - If the number of arguments is invalid, or if the
+#        database does not exist or is not readable.
+#######################################
 delete ( ) {
 	# Verify arguments
 	if [ $# -le 1 ]; then
@@ -334,7 +481,19 @@ delete ( ) {
 	esac
 }
 
-# Primary Logic
+# [ Primary Logic ]
+#######################################
+# Handle the command provided by the user.
+# Globals:
+#   FILENAME
+#   COMMAND
+# Arguments:
+#   $@ - The arguments provided by the user.
+# Outputs:
+#   Writes an error message if the number of arguments
+#    is invalid, or if the command is invalid. Otherwise,
+#    executes the command.
+#######################################
 handle_command ( ) {
 	# Verify that we got a database filename and command
 	if [ $# -le 1 ]; then
@@ -369,6 +528,9 @@ handle_command ( ) {
 			;;
 	esac
 }
+
+# [ Main ]
+# Check if we are in REPL mode
 if [ $# -eq 0 ]; then
 	echo "You have entered REPL mode! Enter ':q' to quit.";
 	while [ true ]; do
@@ -390,6 +552,8 @@ if [ $# -eq 0 ]; then
 		handle_command "$@";
 	done
 else
+	# Since we are in one-shot mode, we will treat the 
+	#  arguments as our own and enable fatal errors.
 	ERR_TYPE="FATAL"
 	handle_command "$@";
 fi
