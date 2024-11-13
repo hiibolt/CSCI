@@ -1,4 +1,4 @@
-#!/nix/store/4bj2kxdm1462fzcc2i2s4dn33g2angcc-bash-5.2p32/bin/bash
+#!/bin/bash
 
 # [ Helper Functions ]
 #######################################
